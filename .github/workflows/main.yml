@@ -1,4 +1,4 @@
-name: Deploy Application
+name: Deploy Docker App
 
 on:
   push:
@@ -6,15 +6,14 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
-      - name: Build da imagem Docker
-        run: docker build -t meu-app .
-
-      - name: Rodar o contêiner
-        run: docker run -d -p 8080:80 meu-app
+      - name: Configurar Docker
+        run: |
+          docker build -t meu-app .
+          docker run -d -p 8080:80 meu-app
