@@ -10,6 +10,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build Docker image
-        run: docker build -t app-deploy-demo.
+        run: docker build -t app-deploy-demo .
       - name: Run Docker container
         run: docker run -d -p 80:80 app-deploy-demo
